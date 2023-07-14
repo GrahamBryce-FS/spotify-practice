@@ -1,5 +1,8 @@
 const axios = require('axios');
 require('dotenv').config();
+const { Token } = require("../models")
+
+
 
 const authController = {};
 
@@ -18,26 +21,38 @@ authController.authorize = (req, res) => {
 authController.callback = async (req, res) => {
   const { code } = req.query;
 
-  const response = await axios({
-    method: 'post',
-    url: 'https://accounts.spotify.com/api/token',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    params: {
-      grant_type: 'authorization_code',
-      code,
-      redirect_uri: process.env.REDIRECT_URI,
-      client_id: process.env.CLIENT_ID,
-      client_secret: process.env.CLIENT_SECRET,
-    },
-  });
+  const token = await Token.findOne({ where: {} });
+  
+  if (token){
+    console.log("FROM DB", token);
+    return res.json(token)
+  }
 
-  const { access_token, refresh_token } = response.data;
+  if(!token && code){
+    const response = await axios({
+      method: 'post',
+      url: 'https://accounts.spotify.com/api/token',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      params: {
+        grant_type: 'authorization_code',
+        code,
+        redirect_uri: process.env.REDIRECT_URI,
+        client_id: process.env.CLIENT_ID,
+        client_secret: process.env.CLIENT_SECRET,
+      },
+    });
+  
+    const { access_token, refresh_token } = response.data;
+  
+    // Do something with access_token and refresh_token
+    // const message = `Authentication successful! Access Token: ${access_token}, Refresh Token: ${refresh_token}`;
+    // res.send(message);
+    const token = await Token.create({ access_token, refresh_token})
+    return res.json(token)
+  }
 
-  // Do something with access_token and refresh_token
-  const message = `Authentication successful! Access Token: ${access_token}, Refresh Token: ${refresh_token}`;
-  res.send(message);
 
 };
 
