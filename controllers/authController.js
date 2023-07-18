@@ -1,6 +1,6 @@
 const axios = require('axios');
 require('dotenv').config();
-const { Token } = require("../models")
+const { Token } = require("../models");
 
 
 
