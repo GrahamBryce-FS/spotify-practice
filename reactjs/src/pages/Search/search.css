@@ -1,0 +1,77 @@
+.searchContainer{
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.artist-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+}
+
+.artist-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.artist-details {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.artist-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.artist-genre {
+  font-size: 1rem;
+  color: #888;
+}
+
+.album-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+}
+
+.album-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.album-details {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.album-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.album-release-date,
+.album-artist {
+  font-size: 1rem;
+  color: #888;
+}
+
+.spacing{
+  display: flex;
+  justify-content: space-evenly;
+}
