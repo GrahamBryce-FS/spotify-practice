@@ -41,10 +41,10 @@ exports.callback = async (req, res) => {
       },
     });
   
-    const { access_token, refresh_token } = response.data;
-    const message = `Authentication successful! Access Token: ${access_token}, Refresh Token: ${refresh_token}`;
-    console.log(message);
-    const token = await Token.create({ access_token, refresh_token})
+    const { access_token, refresh_token, expires_in } = response.data;
+    // const message = `Authentication successful! Access Token: ${access_token}, Refresh Token: ${refresh_token}`;
+    // console.log(message);
+    const token = await Token.create({ access_token, refresh_token,expires_in})
     return res.json(token)
   }
 };
