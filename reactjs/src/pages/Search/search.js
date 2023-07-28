@@ -1,80 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './search.css';
+import SearchBar from '../../components/SearchBar';
+import { searchAlbums } from '../../services/spotify';
 
-const Search = () => {
+const SearchPage = () => {
 
+const [albums, setAlbums] = useState([]);
+
+const handleSearch = async (event) => {
+  event.preventDefault();
+  console.log("Search button clicked!", event.target.search.value);
+  const response = await searchAlbums(event.target.search.value);
+  console.log("From Spotify!", response);
+  setAlbums(response);
+};
 
   return (
     <div className='searchContainer'>
       <section>
-        <h1>Artists</h1>
-          <div className='spacing'>
-            <div className="artist-card">
-              <div className="artist-image">
-                <img src="artist_picture.jpg" alt="Artists picture" />
+
+            <SearchBar className="widthSize" onSubmit={handleSearch} />
+            {albums.length > 0 && (
+              <div>
+                <h3 className='albumHeroText'>Albums</h3>
+                <ul className='albumsContainer'>
+                  {albums.map((album) => (
+                    <a href={album.external_urls.spotify}> 
+                      <img alt="album"className='albumImg' src={album.images[0].url}/>
+                      <p className='albumName' key={album.id}>{album.name}</p>
+                    </a>
+                  ))}
+                </ul>
               </div>
-              <div className="artist-details">
-                <h3 className="artist-name">Artist Name</h3>
-                  <p className="artist-genre">Artist</p>
-              </div>
-            </div>
-            <div className="artist-card">
-              <div className="artist-image">
-                <img src="artist_picture.jpg" alt="Artists picture" />
-              </div>
-              <div className="artist-details">
-                <h3 className="artist-name">Artist Name</h3>
-                  <p className="artist-genre">Artist</p>
-              </div>
-            </div>
-            <div className="artist-card">
-              <div className="artist-image">
-                <img src="artist_picture.jpg" alt="Artists picture" />
-              </div>
-              <div className="artist-details">
-                <h3 className="artist-name">Artist Name</h3>
-                  <p className="artist-genre">Artist</p>
-              </div>
-            </div>
-          </div>
-      </section>
-      <section>
-        <h1>Albums</h1>
-          <div className='spacing'>
-            <div className="album-card">
-              <div className="album-image">
-                <img src="album_picture.jpg" alt="Album" />
-              </div>
-              <div className="album-details">
-                <h3 className="album-name">Album Name</h3>
-                  <p className="album-release-date">Release Date</p>
-                  <p className="album-artist">Artist Name</p>
-              </div>
-            </div>
-            <div className="album-card">
-              <div className="album-image">
-                <img src="album_picture.jpg" alt="Album" />
-              </div>
-              <div className="album-details">
-                <h3 className="album-name">Album Name</h3>
-                  <p className="album-release-date">Release Date</p>
-                  <p className="album-artist">Artist Name</p>
-              </div>
-            </div>
-            <div className="album-card">
-              <div className="album-image">
-                <img src="album_picture.jpg" alt="Album" />
-              </div>
-              <div className="album-details">
-                <h3 className="album-name">Album Name</h3>
-                  <p className="album-release-date">Release Date</p>
-                  <p className="album-artist">Artist Name</p>
-              </div>
-            </div>
-          </div>
+            )}
       </section>
     </div>
   );
 };
 
-export default Search;
+export default SearchPage;
+

@@ -1,5 +1,6 @@
 import React from 'react';
 import '../../assets/global.css'; 
+import { logout } from '../../services/spotify';
 
 
 const Login = () => {
@@ -22,6 +23,7 @@ const Login = () => {
     
       localStorage.setItem('accessToken', data.access_token);
       localStorage.setItem('refreshToken', data.refresh_token);
+      localStorage.setItem('expiresIn', data.expires_in);
     
       window.location.href = '/';
     } catch (error) {
@@ -34,6 +36,7 @@ const Login = () => {
     <div className="loginContainer">
       <h1>In order to use this service, you must sign in to your Spotify account</h1>
       <button className="loginButton" onClick={handleLogin}>Sign in with Spotify</button>
+      <button className="logoutButton" onClick={logout}>Log Out</button>
     </div>
   );
 };

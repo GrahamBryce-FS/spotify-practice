@@ -28,24 +28,23 @@
 .search-bar-container {
   display: flex;
   align-items: center;
-  width: 300px; 
 }
 
 input[type='text'] {
   flex: 1;
-  width: 100%; 
+  width: 300px; 
   padding: 10px;
   font-size: 16px;
   border: 2px solid #ccc;
-  border-radius: 5px 0 0 5px;
+  border-radius: 5px;
   outline: none;
 }
 
 .search-button {
   padding: 12px;
-  background-color: #007bff;
+  background-color: #323232;
   border: none;
-  border-radius: 0 5px 5px 0;
+  border-radius: 5px;
   color: #fff;
   cursor: pointer;
   outline: none;

@@ -54,6 +54,16 @@
   border-radius: 4px;
   cursor: pointer;
 }
+.logoutButton {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #b91d1d;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
 
 .homeContainer {
   display: flex;
@@ -62,3 +72,4 @@
   align-items: center;
   height: 100vh;
 }
+
