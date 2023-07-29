@@ -41,14 +41,11 @@ export const searchAlbums = async (searchTerm) => {
 };
 
 
-// export const searchSongs = async (searchTerm) => {
-//   const artist = await axios.get(`/search?q=${searchTerm}&type=artist`);
-//   const artistId = artist.data.artists.items[0].id;
-//   const albums = await axios.get(
-//     `artists/${artistId}/albums?include_groups=album%2Csingle&market=US&limit=5&offset=0`
-//   );
-//   console.log("albums", albums.data.items);
-//   return albums.data.items;
-// };
+export const searchSongs = async (searchTerm) => {
+  const songs = await axios.get(`/search?q=${searchTerm}&type=track&market=US&limit=5&offset=0`);
+  console.log("songs", songs.data.tracks.items);
+  return songs.data.tracks.items;
+};
+
 
 
