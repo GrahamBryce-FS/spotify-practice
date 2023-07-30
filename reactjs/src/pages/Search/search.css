@@ -21,6 +21,7 @@
   flex-direction: row;
   flex-wrap:wrap;
   gap: 1rem;
+  justify-content: center;
 }
 .albumHeroText{
   align-items: center;
@@ -29,8 +30,9 @@
 }
 
 form{
-  margin-left: 2%;
+  margin-left: 5.5%;
   padding-top: 3rem;
+  padding-bottom: 1rem;
 }
 .searchBtn{
   padding: 12px;
@@ -49,7 +51,7 @@ form{
 .artistImg{
   width: 150px;
 }
-a{
+.albumCardContainer{
   color: white;
   text-decoration: none;
   max-width: 300px;
@@ -79,4 +81,9 @@ h3{
 
 .searchBtn:focus {
   outline: none;
+}
+.songCardContainer{
+  color: white;
+  text-decoration: none;
+  max-width: 150px;
 }

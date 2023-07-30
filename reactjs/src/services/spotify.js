@@ -1,6 +1,18 @@
 import axios from "axios";
 
+// export const refreshToken = async () => {
+//   try {
+//     const response = await fetch('http://localhost:3000/api/v1/auth/refresh');
+//     const data = await response.json();
 
+//     localStorage.setItem('accessToken', data.access_token);
+//     localStorage.setItem('refreshToken', data.refresh_token);
+//     localStorage.setItem('expiresIn', data.expires_in);
+
+//   } catch (error) {
+//     console.error('Error refreshing token:', error);
+//   }
+// };
 
 export const logout = async () => {
   // Clear all localStorage items
@@ -28,7 +40,11 @@ if (!accessToken) {
 }
 
 
+
 export const getCurrentUserProfile = () => axios.get("/me");
+
+
+
 
 export const searchAlbums = async (searchTerm) => {
   const artist = await axios.get(`/search?q=${searchTerm}&type=artist`);
@@ -36,14 +52,14 @@ export const searchAlbums = async (searchTerm) => {
   const albums = await axios.get(
     `artists/${artistId}/albums?include_groups=album%2Csingle&market=US&limit=5&offset=0`
   );
-  console.log("albums", albums.data.items);
+  // console.log("albums", albums.data.items);
   return albums.data.items;
 };
 
 
 export const searchSongs = async (searchTerm) => {
-  const songs = await axios.get(`/search?q=${searchTerm}&type=track&market=US&limit=5&offset=0`);
-  console.log("songs", songs.data.tracks.items);
+  const songs = await axios.get(`/search?q=${searchTerm}&type=track&market=US&limit=10&offset=0`);
+  // console.log("songs", songs.data.tracks.items);
   return songs.data.tracks.items;
 };
 

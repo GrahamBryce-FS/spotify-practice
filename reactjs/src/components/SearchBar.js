@@ -18,6 +18,7 @@ function SearchBar({ onSubmit }) {
     <>
       <form onSubmit={onSubmit}>
         <input
+        className="inputSearch"
           type="text"
           id="search"
           name="search"

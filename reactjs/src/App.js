@@ -6,6 +6,7 @@ import Login from './pages/Login/login';
 import Home from './pages/Home/home';
 import SearchPage from './pages/Search/search';
 
+
 function App() {
   const accessToken = localStorage.getItem("accessToken");
   const [token, setToken] = useState(null);
@@ -17,7 +18,6 @@ function App() {
       navigate('/login');
     }
   }, [accessToken, token, navigate]);
-
   return (
     <div>
       <Header />
@@ -31,57 +31,3 @@ function App() {
 }
 
 export default App;
-
-
-
-// {!token ? (
-// <Route path="/login" element={<Login />} />
-// ) : (
-// <Route path="/" element={<Home />} />)}
-
-
-
-
-
-
-// import React, { useEffect, useState } from 'react';
-// import { Route, Routes, useNavigate } from 'react-router-dom';
-
-
-// import Header from './components/header';
-// import Login from './pages/Login/login';
-// import Home from './pages/Home/home';
-// import SearchPage from './pages/Search/search';
-
-// function App() {
-//   const accessToken = localStorage.getItem("accessToken");
-//   const [token, setToken] = useState(null);
-//   const navigate = useNavigate();
-
-//   useEffect(() => {
-//     setToken(accessToken);
-//     if (!token && window.location.pathname !== '/login') {
-//       navigate('/login');
-//     }
-//     // else if(token && window.location.pathname === '/login'){
-//     //   navigate('/')
-//     // }
-//   }, [accessToken, token, navigate]);
-
-//   return (
-//     <div>
-//       <Header/>
-//       <Routes>
-//       {!token ? (
-// <Route path="/login" element={<Login />} />
-// ) : (
-// <Route path="/" element={<Home />} />)}
-//         {/* <Route path="/login" element={<Login />} />
-//         <Route path="/" element={<Home />} /> */}
-//         <Route path="/search" element={<SearchPage/>} />
-//       </Routes>
-//     </div>
-//   );
-// }
-
-// export default App;
