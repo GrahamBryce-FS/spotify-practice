@@ -25,7 +25,7 @@ To get started all you need to do is install NodeJS v18. Then run the following:
 - In react's folder run this in terminal:
 ```npm start```
 
-once you login on the main page
+once you login on the main page you can access the search engine.
 ## Links
 
 - localhost:8000
